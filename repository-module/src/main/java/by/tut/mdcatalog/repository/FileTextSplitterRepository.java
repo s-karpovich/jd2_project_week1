@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileTextSplitter {
+public class FileTextSplitterRepository {
     public ArrayList<String> getRowsListFromFile(String fileName) throws IOException {
         ArrayList<String> rowsList = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));

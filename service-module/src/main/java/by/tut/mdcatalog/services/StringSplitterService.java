@@ -5,7 +5,7 @@ import by.tut.mdcatalog.services.exceptions.InvalidStringException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringSplitter {
+public class StringSplitterService {
 
     public int add(String numbers) throws InvalidStringException {
         int NumbersInRowSum = 0;

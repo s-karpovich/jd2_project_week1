@@ -1,18 +1,18 @@
 package by.tut.mdcatalog.services;
 
-import by.tut.mdcatalog.repository.FileTextSplitter;
+import by.tut.mdcatalog.repository.FileTextSplitterRepository;
 import by.tut.mdcatalog.services.exceptions.InvalidStringException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Result {
+public class ResultService {
     public String getFileNumbersSum(String fileName) throws IOException, InvalidStringException {
         int NumbersInFileSum = 0;
-        FileTextSplitter fileSplitter = new FileTextSplitter();
+        FileTextSplitterRepository fileSplitter = new FileTextSplitterRepository();
         ArrayList<String> rowsList = fileSplitter.getRowsListFromFile(fileName);
 
-        StringSplitter stringSplitter = new StringSplitter();
+        StringSplitterService stringSplitter = new StringSplitterService();
         for (String row : rowsList) {
             NumbersInFileSum = NumbersInFileSum + stringSplitter.add(row);
         }
