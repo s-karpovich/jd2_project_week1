@@ -7,14 +7,16 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final Logger logger = LogManager.getLogger(App.class);
         Result result = new Result();
 
         try {
-            logger.info(result.getFileNumbersSum("e:/e.txt"));
+            logger.info(result.getFileNumbersSum("" +
+                    "web-module/src/main/resources/e.txt"));
         } catch (IOException | InvalidStringException e) {
-            logger.error(e.getMessage());
+            logger.error(e.getMessage(),e);
+            throw e;
         }
     }
 }

@@ -9,30 +9,42 @@ import static org.junit.Assert.assertTrue;
 
 public class StringSplitterTest
 {
-    @Test
-    public void shouldReturnZeroIfStringIsEmpty() {
-        StringSplitter stringSplitter = new StringSplitter();
-        assertEquals(stringSplitter.add(""),0);
-    }
+
     @Test
     public void shouldCalculateSumOfOneNumberInString() {
         StringSplitter stringSplitter = new StringSplitter();
-        assertEquals(stringSplitter.add("1000"),1000);
+        assertEquals (1000, stringSplitter.add("1000"));
     }
     @Test
-    public void shouldCalculateSumOfTwoNumbersInString() {
-    StringSplitter stringSplitter = new StringSplitter();
-    assertEquals(stringSplitter.add("1000,200"),1200);
-    assertEquals(stringSplitter.add("1000:200"),1200);
-    assertEquals(stringSplitter.add("1000|200"),1200);
-    assertEquals(stringSplitter.add("1000\n200"),1200);
-}
+    public void shouldCalculateIfDelimiterIsComma() {
+        StringSplitter stringSplitter = new StringSplitter();
+        assertEquals(1200, stringSplitter.add("1000,200"));
+    }
+    @Test
+    public void shouldCalculateIfDelimiterIsColon() {
+        StringSplitter stringSplitter = new StringSplitter();
+        assertEquals(1200, stringSplitter.add("1000:200"));
+    }
+    @Test
+    public void shouldCalculateIfDelimiterIsPipe() {
+        StringSplitter stringSplitter = new StringSplitter();
+        assertEquals(1200, stringSplitter.add("1000|200"));
+    }
+    @Test
+    public void shouldCalculateIfDelimiterIsNewLine() {
+        StringSplitter stringSplitter = new StringSplitter();
+        assertEquals(1200, stringSplitter.add("1000\n200"));
+    }
     @Test(expected = InvalidStringException.class)
     public void shouldThrowInvalidStringExceptionIfDoesNotMatchPattern(){
         StringSplitter stringSplitter = new StringSplitter();
         stringSplitter.add("1,2,3");
     }
-
+    @Test
+    public void shouldReturnZeroIfStringIsEmpty() {
+        StringSplitter stringSplitter = new StringSplitter();
+        assertEquals(0, stringSplitter.add(""));
+    }
     @Test(expected = InvalidStringException.class)
     public void shouldThrowInvalidStringExceptionIfNull(){
         StringSplitter stringSplitter = new StringSplitter();

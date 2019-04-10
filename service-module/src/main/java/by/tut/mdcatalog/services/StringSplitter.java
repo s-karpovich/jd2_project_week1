@@ -18,11 +18,12 @@ public class StringSplitter {
         } else {
             throw new InvalidStringException("The string does not match pattern");
         }
+
         return NumbersInRowSum;
     }
 
     private boolean validate(String var) {
-        return (var != null && (var.matches("^([0-9]+[,:|\\\n]*){1,2}$") || var.equals("")));
+        return (var != null && (var.matches("^([0-9]+[,:|\\n]*){1,2}$") || var.equals("")));
     }
 }
 
